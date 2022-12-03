@@ -13,7 +13,9 @@ fun main() {
     }
 }
 
-/*Binary Search is a look-up algorithm, its input is a sorted list of elements*/
+/*Binary Search is a look-up algorithm, its input is a sorted list of elements.
+* This algorithm runs in logarithmic time or log time.
+* */
 
 fun binarySearch(sortedList: IntArray, item: Int): Int? {
 

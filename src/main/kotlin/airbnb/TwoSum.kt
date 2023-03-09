@@ -1,13 +1,9 @@
-package algorithms
-
-import leetCode.MyHashSet
+package airbnb
 
 fun main() {
-
-
+    val array = intArrayOf(2,7,11,15)
 }
 fun twoSum(nums: IntArray, target: Int): IntArray {
-//    val array : IntArray = intArrayOf(2,7,11,15)
 
     val hashMap = hashMapOf<Int, Int>()
 

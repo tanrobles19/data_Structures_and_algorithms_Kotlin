@@ -5,7 +5,7 @@ import kotlin.math.pow
 
 fun main() {
 
-    println(isHappy(3))
+    println(isHappy(19))
 }
 
 fun isHappy(n: Int): Boolean {
@@ -18,7 +18,7 @@ fun isHappy(n: Int): Boolean {
 
         val digitList = Util.integerToDigitList(number)
 
-        digitList.reversed().forEach { value ->
+        digitList.forEach { value ->
             addition += (value * value)
         }
 

@@ -8,15 +8,10 @@ fun twoSum(nums: IntArray, target: Int): IntArray {
     val hashMap = hashMapOf<Int, Int>()
 
     nums.forEachIndexed { index, value ->
-
-        if (hashMap.containsKey(value)) {
-            return intArrayOf(hashMap[value]!!, index)
-        }else{
-            val number = target - value
-            hashMap[number] = index
+        hashMap[target - value]?.let {
+            return intArrayOf(it, index)
         }
-
-
+        hashMap[value] = index
     }
 
     return intArrayOf()

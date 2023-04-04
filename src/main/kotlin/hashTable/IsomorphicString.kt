@@ -23,7 +23,7 @@ fun transformation(s: String): String {
     val hashMap = hashMapOf<Char, Int>()
     val chain = StringBuilder()
 
-    s.toList().forEachIndexed { index, value ->
+    s.forEachIndexed { index, value ->
 
         hashMap.putIfAbsent(value, index)
 

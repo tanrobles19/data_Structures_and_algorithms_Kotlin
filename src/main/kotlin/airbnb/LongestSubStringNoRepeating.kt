@@ -6,18 +6,17 @@ fun main() {
 
 fun lengthOfLongestSubstring(s: String): Int {
 
-    val charList = s.toList()
     var index = 0
     var mainIndex = 0
     var longest = 0
     var hastSet = hashSetOf<Char>()
 
-    if(charList.isEmpty()) {
+    if(s.isEmpty()) {
         return 0
     }
 
     do{
-        val character = charList[index]
+        val character = s[index]
 
         if(!hastSet.contains(character)) {
             hastSet.add(character)
@@ -36,7 +35,7 @@ fun lengthOfLongestSubstring(s: String): Int {
         }// end else
 
         index++
-    }while ( index < charList.size)
+    }while ( index < s.length)
 
     return if(hastSet.size > longest) {
         hastSet.size

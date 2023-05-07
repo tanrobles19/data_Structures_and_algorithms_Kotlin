@@ -15,29 +15,31 @@ fun main() {
 
 fun findRestaurant(list1: Array<String>, list2: Array<String>): Array<String> {
 
-    val hashMap2 = list2.mapIndexed { index, value -> value to index }.toMap()
+    val hashMap = hashMapOf<String, Int>()
+    val resultArrayList = arrayListOf<String>()
 
-    val arrayList = arrayListOf<String>()
-
-    var sum: Int
-    var minSun = Int.MAX_VALUE
+    var min = Int.MAX_VALUE
 
     list1.forEachIndexed { index, value ->
-
-        if(hashMap2.containsKey(value)) {
-
-            sum = index + hashMap2.get(value)!!
-
-            if(sum < minSun) {
-                arrayList.clear()
-                arrayList.add(value)
-                minSun = sum
-            }else if(sum == minSun) {
-                arrayList.add(value)
-            }
-
-        }// end if
+        hashMap.put(value, index)
     }
 
-    return arrayList.toTypedArray()
+    list2.forEachIndexed { index, value ->
+        if(hashMap.containsKey(value)) {
+
+            val sum = index + hashMap.get(value)!!
+
+            if(sum < min) {
+                resultArrayList.clear()
+                resultArrayList.add(value)
+                min = sum
+            }else if( sum == min ){
+                resultArrayList.add(value)
+            }
+
+        }
+    }// end forEach
+
+    return resultArrayList.toTypedArray()
+
 }

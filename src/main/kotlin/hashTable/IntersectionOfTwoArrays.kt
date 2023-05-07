@@ -6,26 +6,21 @@ fun main() {
     var nums = intArrayOf(1, 2, 2, 1)
     var nums2 = intArrayOf(2, 2)
 
-    intersection(nums, nums2)
+    println(intersection(nums, nums2))
 }
 
 fun intersection(nums1: IntArray, nums2: IntArray): IntArray {
 
-    val hashSet = hashSetOf<Int>()
-    val intersection = hashSetOf<Int>()
+    val numHasSet = hashSetOf<Int>()
+    val resultHasSet = hashSetOf<Int>()
 
     nums1.forEach {
-        hashSet.add(it)
+        numHasSet.add(it)
     }
 
-    nums2.forEachIndexed { index, value ->
-        if(hashSet.contains(value)) {
-            intersection.add(value)
-        }
+    nums2.forEach {
+        if( numHasSet.contains(it) ) resultHasSet.add(it)
     }
 
-    hashSet.toList()
-
-    return intersection.toIntArray()
-
+    return  resultHasSet.toIntArray()
 }

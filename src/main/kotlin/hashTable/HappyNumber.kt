@@ -5,32 +5,43 @@ import kotlin.math.pow
 
 fun main() {
 
-    println(isHappy(19))
+    println(isHappy(2))
+
+//    integerToDigits(19)
+
 }
 
 fun isHappy(n: Int): Boolean {
 
-    var number = n
-    var addition = 0
-    val hashSet = hashSetOf<Int>()
+    var sum = n
+    val resultsHashSet = hashSetOf<Int>()
 
     do {
 
-        val digitList = Util.integerToDigitList(number)
-
-        digitList.forEach { value ->
-            addition += (value * value)
+        val temp = sum
+        sum = 0
+        integerToDigits(temp).forEach {
+            sum += (it * it)
         }
 
-        if (!hashSet.add(addition)) {
-            break
+        if(sum == 1) return true
+
+        if (resultsHashSet.contains(sum)) {
+            return false
         }else{
-            number = addition
-            addition = 0
+            resultsHashSet.add(sum)
         }
 
-    } while (number != 1)
+    }while (true)
 
-    return number == 1
+}
+private fun integerToDigits(number : Int) : List<Int>{
+    var numberTemp = number
+    val listOfDigits = arrayListOf<Int>()
 
-}// end fun isHappy()
+    while (numberTemp != 0) {
+        listOfDigits.add( numberTemp % 10 )
+        numberTemp /= 10
+    }
+    return listOfDigits
+}

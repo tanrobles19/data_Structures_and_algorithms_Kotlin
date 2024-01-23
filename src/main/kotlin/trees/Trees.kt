@@ -73,15 +73,43 @@ fun inorderIterative(root: TreeNode?): List<Int> {
     return list
 }
 
-fun postTraversal(node: TreeNode?, list: ArrayList<Int>): List<Int> {
+fun postOrderTraversal(node: TreeNode?, list: ArrayList<Int>): List<Int> {
 
-    node?.left?.let { postTraversal(node.left, list) }
+    node?.left?.let { postOrderTraversal(node.left, list) }
 
-    node?.right?.let { postTraversal(node.right, list) }
+    node?.right?.let { postOrderTraversal(node.right, list) }
 
     node?.`val`?.let { list.add(it) }
 
     return list
 }
+
+fun postOrderIterative(root: TreeNode?): List<Int> {
+
+    val result = arrayListOf<Int>()
+    val stack = arrayListOf<TreeNode?>()
+
+    if(root == null) return result
+
+    stack.add(root)
+
+    while (stack.isNotEmpty()) {
+
+        val node = stack.removeLast()
+
+        node?.`val`?.let {
+            result.add(0, it)
+        }
+
+        node?.left?.let { stack.add(it) }
+        node?.right?.let { stack.add(it) }
+
+    }
+
+    return result
+
+}// end postOrderIterative()
+
+
 
 

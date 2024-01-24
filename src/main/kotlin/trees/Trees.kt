@@ -2,10 +2,11 @@ package trees
 
 import apple.laf.JRSUIUtils.Tree
 import models.TreeNode
+import models.TreeNodeS
 
-fun preorderTraversal(root: TreeNode?): List<Int> {
-    return traversal(root, arrayListOf())
-}
+//fun preorderTraversal(root: TreeNode?): List<Int> {
+////    return traversal(root, arrayListOf())
+//}
 
 // ITERATIVE SOLUTION
 
@@ -45,9 +46,9 @@ fun preorderTraversal(node: TreeNode?, list: ArrayList<Int>): List<Int> {
         return list
     }
 
-    if(node.left != null) traversal(node.left, list)
-
-    if(node.right != null) traversal(node.right, list)
+//    if(node.left != null) traversal(node.left, list)
+//
+//    if(node.right != null) traversal(node.right, list)
 
     return list
 }
@@ -109,6 +110,36 @@ fun postOrderIterative(root: TreeNode?): List<Int> {
     return result
 
 }// end postOrderIterative()
+
+var stack = arrayListOf<TreeNodeS?>()
+var result = arrayListOf<String>()
+
+fun levelOrder(root: TreeNodeS?): List<String> {
+
+    stack.add(root)
+
+    return BST()
+}
+
+fun BST(): List<String> {
+
+    val node = stack.removeFirst()
+
+    node?.`val`?.let {
+        result.add(it)
+    }
+
+    node?.left?.let { stack.add(it) }
+
+    node?.right?.let { stack.add(it) }
+
+    if(stack.isNotEmpty()) {
+        return BST()
+    }else{
+        return result
+    }
+
+}
 
 
 

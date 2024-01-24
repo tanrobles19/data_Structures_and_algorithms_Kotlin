@@ -1,19 +1,39 @@
 package algorithms.challenge
 
 import models.TreeNode
+import models.TreeNodeS
+import trees.levelOrder
 import trees.preorderTraversal
 
 fun main() {
 
-    val root = TreeNode(1)
+    val root = TreeNodeS("F")
 
-    root.left = null
-    root.right = TreeNode(2)
+    val B = TreeNodeS("B")
+    val G = TreeNodeS("G")
 
-    root.right?.left = TreeNode(3)
+    root.left = B
+    root.right = G
 
-    val list = traversalIteratively(root)
-    println(list)
+    val A = TreeNodeS("A")
+    val D = TreeNodeS("D")
+    val I = TreeNodeS("I")
+
+    B.right = D
+    B.left = A
+    G.right = I
+
+    val C = TreeNodeS("C")
+    val E = TreeNodeS("E")
+    val H = TreeNodeS("H")
+
+    D.left = C
+    D.right = E
+    I.left = H
+
+//    val list = traversalIteratively(root)
+    val result = levelOrder(root)
+    println(result)
 
 }
 
